@@ -1,0 +1,245 @@
+/* Slap Boss — legal site theme: office-memo / ink-stamp */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root {
+  --paper: #ffffff;
+  --ink: #1a1a1a;
+  --muted: #5e584f;
+  --line: #e4ded2;
+  --stamp: #b3281a;
+  --stamp-soft: rgba(179,40,26,0.09);
+  --folder-green: #2f5233;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #17150f;
+    --ink: #ece7db;
+    --muted: #a39b89;
+    --line: #322d22;
+    --stamp: #e35b45;
+    --stamp-soft: rgba(227,91,69,0.14);
+    --folder-green: #7bab80;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.65;
+  font-size: 17px;
+}
+
+.wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px 100px;
+}
+
+/* ---- top bar: wordmark + language switch ---- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 28px 20px 0;
+}
+
+.wordmark {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.wordmark span {
+  color: var(--stamp);
+}
+
+.lang-switch {
+  display: flex;
+  gap: 2px;
+  border: 1.5px solid var(--line);
+  border-radius: 7px;
+  padding: 2px;
+}
+
+.lang-switch button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.lang-switch button.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ---- breadcrumb / back link ---- */
+
+.crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 28px 0 0;
+  font-family: 'Archivo', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.crumb:hover { color: var(--stamp); }
+
+/* ---- typography ---- */
+
+h1 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 900;
+  font-size: 1.7rem;
+  line-height: 1.2;
+  margin: 18px 0 6px;
+  max-width: 18ch;
+}
+
+.doc-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed var(--line);
+}
+
+h2 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 1.08rem;
+  margin-top: 38px;
+  margin-bottom: 10px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+
+p { margin: 0 0 15px; max-width: 64ch; }
+ul { margin: 0 0 15px; padding-left: 22px; max-width: 64ch; }
+li { margin-bottom: 7px; }
+strong { font-weight: 600; }
+em { color: var(--muted); font-style: italic; }
+a { color: var(--stamp); }
+
+.lang-block { display: none; }
+.lang-block.active { display: block; }
+
+.placeholder {
+  background: var(--stamp-soft);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9em;
+}
+
+/* ---- hub / homepage ---- */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin: 36px 0 44px;
+}
+
+.stamp-svg { flex-shrink: 0; width: 148px; height: 148px; }
+
+.hero h1 {
+  max-width: none;
+  font-size: 1.85rem;
+  margin: 0 0 10px;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 0.98rem;
+  margin: 0;
+}
+
+.folders {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.folder {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: 3px 14px 3px 3px;
+  padding: 20px 22px;
+  box-shadow: 5px 5px 0 var(--line);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.folder:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--stamp-soft);
+  border-color: var(--stamp);
+}
+
+.folder-title {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0 0 4px;
+}
+
+.folder-desc {
+  font-family: 'Source Serif 4', serif;
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.folder-arrow {
+  font-family: 'Archivo', sans-serif;
+  font-size: 1.3rem;
+  color: var(--stamp);
+  flex-shrink: 0;
+}
+
+.footnote {
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--line);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.footnote div { margin-bottom: 3px; }
+
+@media (max-width: 520px) {
+  .hero { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .stamp-svg { width: 112px; height: 112px; }
+}
